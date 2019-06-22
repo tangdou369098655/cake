@@ -1,0 +1,234 @@
+/*通用粉色字体*/
+.pink1 {
+  color: #fa9dac !important;
+}
+
+/*通用粉色背景*/
+.bacpink {
+  background: #fa9dac !important;
+}
+
+/*通用白色字体*/
+.white1 {
+  color: white;
+}
+
+/*通用黑色字体*/
+.imcolor-black {
+  color: #4D4143;
+}
+/* 通用灰色字体 */
+.f-gray{
+  color: #878787;
+}
+/*版心*/
+.wid {
+  width: 1200px;
+  margin: auto;
+}
+i{
+  font-style:normal;
+}
+.fr {
+  float: right;
+}
+
+.fl {
+  float: left;
+}
+
+.font16 {
+  font-size: 16px;
+}
+
+
+.clearfix:after {
+  display: block;
+  clear: both;
+  content: "";
+  visibility: hidden;
+  height: 0;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* 导航栏设置1 */
+header {
+  position: fixed;
+  width: 100%;
+  background-color: #fff;
+  line-height: 44px;
+  z-index: 100;
+}
+
+header div.main {
+  margin: 25px auto 0px auto;
+
+}
+
+/* 导航栏设置2 */
+/* 导航栏内部隐藏区域设置1 */
+.navid ul li {
+  list-style: none;
+  float: left;
+  margin: 0 28px;
+}
+
+.navid ul li.navid-list {
+  cursor: pointer;
+}
+
+.navid {
+  padding: 20px;
+}
+
+.navid-list,
+.navid-list p {
+  text-align: center;
+  width: 200px;
+}
+
+.navid-list>img {
+  width: 200px;
+  height: 133px;
+  display: block;
+}
+
+.navid-list>p:nth-child(1) {
+  font-size: 16px;
+  color: #333;
+}
+
+.navid-list>p:nth-child(2) {
+  font-size: 16px;
+  color: #f775a7;
+}
+
+.navid .navid-gray {
+  width: 1px;
+  height: 104px;
+  background: #e5e5e5;
+  margin-top: 41px;
+}
+header .flower img {
+  position: absolute;
+  display: inline-block;
+  /* width: 30px; */
+  animation:flower 1.5s linear infinite;
+}
+.cake-logo{
+  position: relative;
+}
+header .flower>img:nth-child(1) {
+  width: 30px;
+  left: 200px;
+  top: 0px;
+}
+header .flower>img:nth-child(2) {
+  width: 40px;
+    left: 10px;
+    top: 35px;
+} 
+/* 导航栏内部隐藏区域设置2 */
+/* 页面底部开始 */
+.footer {
+  text-align: center;
+  background-color: #fa9dac;
+  position: relative;
+}
+
+.footer>.wid {
+  padding: 60px;
+}
+
+.footer ul {
+  margin: 10px auto;
+}
+
+.footer ul>li {
+  display: inline-block;
+  margin: 10px;
+}
+
+.footer ul a {
+  color: white;
+  font-size: 14px;
+}
+
+.footer ul a:hover {
+  color: black;
+}
+
+.footer .hr {
+  color: rgb(85, 59, 63);
+  font-size: 12px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgb(85, 59, 63)
+}
+
+.footer i,
+.footer i a {
+  color: rgb(85, 59, 63);
+  font-size: 12px;
+  font-style: normal;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.footer i a:hover {
+  color: white;
+}
+
+.footer .flower img {
+  position: absolute;
+  display: inline-block;
+  /* width: 30px; */
+  animation:flower 1.5s linear infinite;
+}
+
+.footer .flower>img:nth-child(1) {
+  width: 100px;
+  left: 19px;
+  top: 101px;
+}
+
+.footer .flower>img:nth-child(2) {
+  width: 80px;
+  left: 130px;
+    top: 112px;
+}
+
+.footer .flower>img:nth-child(3) {
+  width: 60px;
+  left: 230px;
+    top: 121px;
+}
+.footer .flower>img:nth-child(4) {
+  width: 50px;
+  left: 306px;
+    top: 127px;
+}.footer .flower>img:nth-child(5) {
+  width: 35px;
+  left: 367px;
+  top: 135px;
+}
+@keyframes flower{
+ 
+  0%{-webkit-transform:rotate(0deg);}
+
+  25%{-webkit-transform:rotate(90deg);}
+
+  50%{-webkit-transform:rotate(180deg);}
+
+  75%{-webkit-transform:rotate(270deg);}
+
+  100%{-webkit-transform:rotate(360deg);}
+
+}
+/* 页面底部结束 */
