@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+	<head>
+		<title>用户登录-通行证-糖豆豆</title>
+		<meta charset="utf-8"/>
+		<link rel="stylesheet" href="css/layui.css">
+		<link rel="stylesheet" href="css/common.css">
+		<link rel="stylesheet" href="css/font-awesome.css">
+		<link rel="stylesheet" href="/favicon.ico">
+		<link rel="stylesheet" href="css/base.css">
+		<link rel="stylesheet" href="css/other.css">
+		<script>
+		function regLogin01(){
+		var u_phone=utelephone.value;
+		var u_upwd=upwd.value;
+		var xhr=new XMLHttpRequest();
+		xhr.onreadystatechange=function(){
+			if(xhr.readyState==4&&xhr.status==200){
+				var result=xhr.responseText;
+				if(result==1){ alert("登录成功")};
+				if(result==2){ alert("用户名或密码错误，请重新输入")};
+				if(result==3){ alert("用户名或密码不能为空")};
+			};
+		};
+		xhr.open("post","http://127.0.0.1:8080/user/login",true);
+		var formdata="utelephone="+u_phone+"&upassword="+u_upwd;
+		xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+		xhr.send(formdata);
+		};
+		</script>
+	</head>
+	<body>
+<!--背景图-->
+		<div class="tdd_bgc">
+<!--导航栏-->
+		<nav  class="login-nav">
+			<div  class="login-nav_div">
+				<a href="www.tangdd.cn">
+				<img src="images/index/tdd.png" class="tddlogo">
+				</a>
+				<span>|</span>
+				<span>通行证</span> 
+				<span></span>
+				<i class="fa  fa-spin">
+				<img src="images/index/flowers/1 (7).gif" class="flower4"></i>
+				<i class="fa  fa-spin">
+				<img src="images/index/flowers/1 (4).gif" class="flower5"></i>
+			</div>
+			<hr class="login-nav-hr">
+		</nav>
+<!--上半部分  -->
+		<section class="login-section">
+		<!--大图标以及网站介绍-->
+			<div class="login-section_top" >
+				<a href="#">
+					<img src="images/index/tdd2.png">
+				</a>
+				<p>登录糖豆豆蛋糕tangdd.cn-分享新鲜美时美刻！</p>
+			</div>
+		<!--登录框-->
+			<div  class="login-login">
+				<div  class="login-login1" >
+					<p id="login-number">手机号登录</p>
+					<p id="login-username">用户名登录</p>
+					<div class="login-line1"></div>
+					<div class="login-line2"></div>
+				</div>
+				<div  class="login-login2">
+					<input type="text" placeholder="手机号" class="input1" id="utelephone">
+					<input type="text" placeholder="密码" class="input1" id="upwd">
+					<input type="button" value="登录" class="input2" onclick="regLogin01()">
+				</div>
+				<div class="login-login3">
+					<div  class="login-login3-radio">
+						<input type="radio" id="auto_reg">
+						<span>
+							<label for="auto_reg">下次自动登录</label>
+						</span>
+					</div>
+					<a href="#"class="imcolor">忘记密码</a>
+					&nbsp;
+					<span class="imcolor">|</span>
+					&nbsp;
+					<a href="#" class="imcolor">注册</a>
+				</div>
+			</div>
+		</section>
+<!--页面底部-->
+		<footer class="login-footer">
+			<div class="login-footer1 imcolor-black">
+				<div class="comfrom">图片来自糖豆豆tangdd.cn</div>
+				<p class="smallfont">备案号</p>
+				<p class="smallfont">Copyright &copy; 20018-2050 TANGDD 中文 English</p>
+			</div>
+			<div class="login-footer-flower">
+				<i class="fa  fa-spin">
+				<img src="images/index/flowers/1 (2).gif" class="flower1"></i>
+				<i class="fa   fa-spin">
+				<img src="images/index/flowers/1 (7).gif" class="flower2"></i>
+				<i class="fa  fa-spin">
+				<img src="images/index/flowers/1 (2).gif" class="flower3"></i>
+				<i class="fa  fa-spin">
+				<img src="images/index/flowers/1 (5).gif" class="flower4"></i>
+				<i class="fa  fa-spin">
+				<img src="images/index/flowers/1 (7).gif" class="flower5"></i>
+			</div>
+		</footer>
+	</body>
+</html>
