@@ -1,24 +1,4 @@
-/* 面包屑导航1 */
-.bar{
-  padding-top:130px;
-  padding-bottom: 20px;
-}
-.bar span{
-  display:inline-block;
-  margin-right: 10px;
-  padding:2px 6px;
-  border:1px solid #ccc;
-  border-radius:5px;
-  font-size:14px;
-}
-.bar>span~span{
-margin-left:10px;
-}
-.icon-dayuhao{
-  color:black;
-  font-size:15px;
-}
-/* 面包屑导航2 */
+
 /* 第一部分1 */
 .p-main{
   padding-bottom: 20px;
@@ -124,14 +104,27 @@ margin-top: 10px;
     cursor: pointer;
     color:#fa9dac;
   }
+  .count>div{
+    display: inline-block;
+    width:20px;
+    height:30px;
+  }
+  .count{
+    /*双击文字、input等，出现的蓝色底色，如何去除*/
+    -moz-user-select:none;/*火狐*/
+    -webkit-user-select:none;/*webkit浏览器*/
+    -ms-user-select:none;/*IE10*/
+    /*-khtml-user-select:none;!*早期浏览器*!*/
+    user-select:none;
+  }
   .count>h3>input{
     padding:0;
     font-size: 27px;
     font-weight: 500;
-    margin:0 15px;
+    /* margin:0 15px; */
     color:#fa9dac;
     text-align:center;
-    width:30px;
+    width:65px;
   }
  .buy>span{
   cursor: pointer;
@@ -210,9 +203,10 @@ display:inline-block;
 .pro-img{
   margin-top:50px;
 }
-.pro-img>img{
+.pro-img>img,#lg_img>img{
   width: 100%;
 }
+
 /* 图片区域开始2 */
 /* 配送区域开始1 */
 .distribution{
