@@ -1,0 +1,105 @@
+/* 个人中心开始1 */
+.personal{
+  background-color: #f5f5f5;
+  padding:30px
+}
+.personal .bar{
+  margin-bottom: 20px;
+  /* background-color: #fff; */
+}
+.personal-left{
+width:220px;
+float: left;
+}
+.personal-left,.personal-right{
+  padding:40px;
+  height:600px;
+  box-sizing:border-box;
+  background-color: #fff;
+}
+.personal-right{
+  width: 950px;
+  float:right;
+}
+.personal-left>p{
+  font-size:16px;
+  color:#fa9dac;
+  margin:25px 0;
+}
+.personal-left ul li{
+  margin-bottom: 15px;
+  font-size:14px;
+}
+.icon-yonghutouxiang{
+  font-size:140px;
+  color:#ccc;
+}
+.img-self{
+  width:150px;
+  height:150px;
+  overflow: hidden;
+  border:1px solid #ccc;
+  border-radius: 50%;
+}
+.img-self img{
+  width:100%;
+  
+}
+.personal-top,.personal-bottom{
+  margin:20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items:center;
+}
+.personal-top{
+  padding-bottom:20px;
+  border-bottom: 1px solid #ccc;
+}
+.personal-top>ul,.img-self{
+  display: inline-block;
+}
+.personal-top>ul{
+  margin-right:70px;
+  font-size: 14px;
+}
+.personal-top>ul>li{
+  margin:10px 0;
+}
+.personal-top>ul>li>span{
+  cursor: pointer;
+  color:#fa9dac;
+}
+.personal-name{
+  font-size:30px;
+  color:#fa9dac;
+}
+.personal-bottom{
+  flex-wrap: wrap;
+}
+.bottom-item{
+  width:50%;
+  display:flex;
+  align-items:center;
+  margin:25px 0;
+  justify-content:center;
+
+}
+.bottom-item>i{
+font-size:80px;
+color:#fa9dac;
+display:inline-block;
+cursor: pointer;
+}
+.bottom-item>ul{
+  display:inline-block;
+  margin-left:20px;
+  font-size:14px;
+  cursor: pointer;
+}
+.bottom-item>ul>li{
+  padding:5px;
+}
+.bottom-item>ul span{
+color:#fa9dac;
+}
+/* 个人中心开始2 */
