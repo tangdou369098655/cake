@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>个人中心tangdd.cn</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- 引入图标 -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <!--引入共同样式以及字体 -->
+  <link rel="stylesheet" href="layui/css/layui.css"  media="all">
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1223203_jqitmobrk5.css">
+  <link rel="stylesheet" href="css/animate.min.css">
+  <link rel="stylesheet" href="css/index.css">
+  <!-- base里面只写自创公共样式 -->
+  <link rel="stylesheet" type="text/css" href="css/base.css">
+  <!-- 以下是需要引用的本页面以及关联页面css -->
+  <link rel="stylesheet" href="css/portal.css">
+</head>
+
+<body>
+  <!-- 导航栏开始 -->
+  <div class="headerpage "></div>
+  <!-- 导航栏结束 -->
+  <!-- 页面主体内容开始1 -->
+      <div class="personal">
+        <div class="wid">
+          <!-- 面包屑导航1 -->
+          <div class="bar">
+            <span id="kinds">首页</span>
+            <i class=" iconfont icon-dayuhao"></i>
+            <span id="nav_name">个人中心</span>
+          </div>
+          <!-- 面包屑导航2 -->
+      <!-- 个人中心开始1 -->
+          <div class="main-personal">
+            <!-- 快捷导航左侧1 -->
+            <div class="personal-left">
+              <p>快捷导航</p>
+              <ul>
+                <li class="personal-action">个人中心</li>
+                <li>我的订单</li>
+                <li>我的购物车</li>
+                <li>随便逛逛</li>
+                <li>优惠产品</li>
+              </ul>
+              <p>账户管理</p>
+              <ul>
+                <li>个人信息</li>
+                <li>修改密码</li>
+                <li>收货地址</li>
+              </ul>
+            </div>
+            <!-- 快捷导航左侧2 -->
+            <!-- 会有改动部分1 -->
+            <!-- 个人中心模块1 -->
+            <div class="personal-right ">
+              <div class="personal-top">
+                <div class="img-self">
+                    <img src="images/index/d7.gif" alt="">
+                </div>
+                <ul>
+                  <li class="personal-name">糖糖</li>
+                  <li class="text-gray"><span>修改个人信息&gt;</span></li>
+                </ul>
+                <ul>
+                  <li>账户安全：<span>普通</span></li>
+                  <li>绑定手机：<span>18625578825</span></li>
+                  <li>绑定邮箱：<span>未绑定</span></li>
+                </ul>
+              </div>
+              <div class="personal-bottom">
+                <div class="bottom-item">
+                  <i class="icon iconfont icon-qunfengqiabao"></i>
+                  <ul>
+                    <li>待支付订单：<span>0</span></li>
+                    <li><span>查看待支付订单&gt;</span></li>
+                  </ul>
+                </div>
+                <div class="bottom-item">
+                  <i class="icon iconfont icon-daipingjia01"></i>
+                  <ul>
+                    <li>待评价订单：<span>0</span></li>
+                    <li><span>查看待评价订单&gt;</span></li>
+                  </ul>
+                </div>
+                <div class="bottom-item">
+                  <i class="icon iconfont icon-shouhuoshou--"></i>
+                  <ul>
+                    <li>待收货订单：<span>1</span></li>
+                    <li><span>查看待收货订单&gt;</span></li>
+                  </ul>
+                </div>
+                <div class="bottom-item">
+                  <i class="icon iconfont icon-ziyuanxhdpi"></i>
+                  <ul>
+                    <li>到处去看看：<span>go</span></li>
+                    <li><span>到处去看看&gt;</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!-- 个人中心模块1 -->
+            <!-- 我的订单模块1 -->
+            <div class="personal-right ">
+                <div class="myorder">
+                  <ul class="myorder-top clearfix">
+                    <li class="top-one">我的订单</li>
+                    <li class="top-active">全部订单</li>
+                    <li>未收货</li>
+                    <li>已收货</li>
+                    <li>未评价</li>
+                  </ul> 
+                  <ul class="myorder-title clearfix bgcy">
+                    <li>商品信息</li>
+                    <li>订单金额</li>
+                    <li>收货信息</li>
+                    <li>订单状态</li>
+                    <li>操作</li>
+                  </ul>
+                  <!-- 具体订单信息需循环1 -->
+                  <div class="myorder-item-list">
+                  <ul class="myorder-item-title clearfix  bgcy">
+                    <li>2018-2-12 09:20:24</li>
+                    <li>订单号：72198590275</li>
+                  </ul>
+                  <ul class="myorder-title clearfix flex-item">
+                    <li>
+                      <img src="images/index/黑白巧克力芝士.png" alt="">
+                      <span>黑白巧克力芝士/尺寸：2.2寸/蜡烛1份/送达时间：2018-4-3 09:00-10:00</span>
+                      <i>x1</i>
+                    </li>
+                    <li>218.00</li>
+                    <li>
+                      糖糖
+                      18625578825
+                      <br>
+                      北京 北京市 东城区 安定门街道 00001号
+                    </li>
+                    <li>已签收</li>
+                    <li >
+                      <i class="icon iconfont icon-daipingjia01 pink1"></i>
+                      &ensp; 
+                      <i>再次<br>购买</i>
+                    </li>
+                  </ul>
+                  </div>
+                  <!-- 具体订单信息需循环1 -->
+                </div>
+              </div>
+            <!-- 我的订单模块2 -->
+            <!-- 个人信息模块1 -->
+            <div class="personal-right ">
+                <div class="myorder">
+                  <ul class="myorder-top clearfix">
+                    <li class="top-one">我的基本信息</li>
+                  </ul> 
+                  <form action="#">
+                      <ul class="myorder-myself">
+                          <li>
+                              <span>&emsp;&emsp;头像：</span>
+                              <img src="images/index/d7.gif" alt="">
+                            </li>
+                            <li>
+                                <span>更换头像：</span>
+                                <input type="file" style="border:0px;padding:0">
+                              </li>
+                        <li>
+                            <span>&emsp;用户名：</span>
+                          <input type="text"  value="糖糖" autofocus>
+                        </li>
+                        <li>
+                          <span>&emsp; &emsp;昵称：</span>
+                          <input type="text"  value="糖糖" autofocus>
+                          </li>
+                        <li>
+                            <span>&emsp; &emsp;年龄：</span>
+                          <input type="number"  value="10" min="5">
+                          </li>
+                        <li>
+                            <span>手机号码：</span>
+                          <input type="text"  value="18625578825" autofocus>
+                          </li>
+                          <li>
+                              <span> &emsp; &emsp;邮箱：</span>
+                            <input type="email"  value="糖糖" autofocus>
+                            </li>
+                          <li>
+                              <span> &emsp; &emsp;生日：</span>
+                            <input type="date"  placeholder="糖糖" autofocus>
+                            </li>
+                            <li class="up-submit">
+                              <input type="submit"  value="提交修改" >
+                            </li>
+                      </ul>
+                    
+                  </form>
+                </div>
+              </div>
+            <!-- 个人信息模块2 -->
+            <!-- 修改密码模块1 -->
+            <div class="personal-right ">
+                <div class="myorder">
+                  <ul class="myorder-top clearfix">
+                    <li class="top-one">修改密码</li>
+                  </ul> 
+                  <form action="#">
+                      <ul class="myorder-myself">
+                        <li>
+                            <span>原始密码：</span>
+                          <input type="password"  value="" autofocus>
+                        </li>
+                        <li>
+                          <span>&emsp;新密码：</span>
+                          <input type="password"   value="" autofocus>
+                          </li>
+                        <li>
+                            <span>再次输入：</span>
+                          <input type="password"   value="" min="5">
+                          </li>
+                            <li class="up-submit">
+                              <input type="submit"  value="提交修改" >
+                            </li>
+                      </ul>
+                    
+                  </form>
+                </div>
+              </div>
+            <!-- 修改密码模块2 -->
+            <!-- 收货地址模块1 -->
+            <div class="personal-right  ">
+              <div class="myorder">
+                <ul class="myorder-top clearfix">
+                  <li class="top-one">收货地址</li>
+                </ul>
+                <ul class="address-all">
+                  <li class="address-item address-active">
+                      <ul class="clearfix">
+                        <li>
+                          <span>收货姓名：</span>
+                          <input type="text">
+                        </li>
+                        <li>
+                          <span>电话号码：</span>
+                          <input type="text">
+                        </li>
+                        <li>
+                            <form class="layui-form" action="">
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">县区地址：</label>
+                                    <div class="layui-input-inline">
+                                      <select name="quiz1">
+                                        <option value="">请选择省</option>
+                                        <option value="浙江" selected="">浙江省</option>
+                                        <option value="你的工号">江西省</option>
+                                        <option value="你最喜欢的老师">福建省</option>
+                                      </select>
+                                    </div>
+                                    <div class="layui-input-inline">
+                                      <select name="quiz2">
+                                        <option value="">请选择市</option>
+                                        <option value="杭州">杭州</option>
+                                        <option value="宁波" disabled="">宁波</option>
+                                        <option value="温州">温州</option>
+                                        <option value="温州">台州</option>
+                                        <option value="温州">绍兴</option>
+                                      </select>
+                                    </div>
+                                    <div class="layui-input-inline">
+                                      <select name="quiz3">
+                                        <option value="">请选择县/区</option>
+                                        <option value="西湖区">西湖区</option>
+                                        <option value="余杭区">余杭区</option>
+                                        <option value="拱墅区">临安市</option>
+                                      </select>
+                                    </div>
+                                </div>
+                            </form>
+                        </li>
+                        <li>
+                          <span>详细地址：</span>
+                          <input type="text">
+                        </li>
+                        <li>
+                          <span>其它备注：</span>
+                          <input type="text">
+                        </li>
+                        <li>
+                          <span class="btn-pink">设为默认</span>
+                          <span class="btn-pink">修改信息</span>
+                        </li>
+                      </ul>
+                  </li>
+                  <li class="address-item ">
+                      <ul class="clearfix">
+                        <li>
+                          <span>收货姓名：</span>
+                          <input type="text">
+                        </li>
+                        <li>
+                          <span>电话号码：</span>
+                          <input type="text">
+                        </li>
+                        <li>
+                            <form class="layui-form" action="">
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">县区地址：</label>
+                                    <div class="layui-input-inline">
+                                      <select name="quiz1">
+                                        <option value="">请选择省</option>
+                                        <option value="浙江" selected="">浙江省</option>
+                                        <option value="你的工号">江西省</option>
+                                        <option value="你最喜欢的老师">福建省</option>
+                                      </select>
+                                    </div>
+                                    <div class="layui-input-inline">
+                                      <select name="quiz2">
+                                        <option value="">请选择市</option>
+                                        <option value="杭州">杭州</option>
+                                        <option value="宁波" disabled="">宁波</option>
+                                        <option value="温州">温州</option>
+                                        <option value="温州">台州</option>
+                                        <option value="温州">绍兴</option>
+                                      </select>
+                                    </div>
+                                    <div class="layui-input-inline">
+                                      <select name="quiz3">
+                                        <option value="">请选择县/区</option>
+                                        <option value="西湖区">西湖区</option>
+                                        <option value="余杭区">余杭区</option>
+                                        <option value="拱墅区">临安市</option>
+                                      </select>
+                                    </div>
+                                </div>
+                            </form>
+                        </li>
+                        <li>
+                          <span>详细地址：</span>
+                          <input type="text">
+                        </li>
+                        <li>
+                          <span>其它备注：</span>
+                          <input type="text">
+                        </li>
+                        <li>
+                          <span class="btn-pink">设为默认</span>
+                          <span class="btn-pink">修改信息</span>
+                        </li>
+                      </ul>
+                  </li>
+                  <li class="address-item address-add">
+                    <ul class="clearfix">
+                      <li>
+                        <span class="icon iconfont icon-jiahao1 btn-white">&emsp;点击添加新地址</span>
+                      </li>
+                    </ul>
+                </li>
+                </ul> 
+              </div>
+            </div>
+            <!-- 收货地址模块2 -->
+            <!-- 会有改动部分2 -->
+            <div class="clearfix"></div>
+          </div>
+      <!-- 个人中心开始2 -->
+        </div>
+      </div>
+  <!-- 页面主体内容开始1 -->
+  <!-- 底部引入1 -->
+  <footer>
+		
+    <!-- 页面底部开始 -->
+    <div class="footer">
+      <div class="wid">
+          <ul class="clearfix">
+            <li><a href="#">回到顶部</a></li>
+            <li><a href="#">产品介绍</a></li>
+            <li><a href="#">优惠产品</a></li>
+            <li><a href="#">关于我们</a></li>
+            <li><a href="#">联系我们</a></li>
+          </ul>
+          <div class="hr">
+            <span>Copyright © 2019 糖豆豆蛋糕主题演示1站 · Powered By <a href="#">TANG · Dou Theme By SunJD</a></span>
+          </div>
+          <i>友情链接: &nbsp;
+            <a href="#">糖豆豆官网</a>
+            <a href="#">糖豆豆官网</a>
+            <a href="#">糖豆豆官网</a>
+          </i>
+          <div class="flower ">
+              <img src="images/index/flowers/f1.png" alt="">
+              <img src="images/index/flowers/f3.png" alt="">
+              <img src="images/index/flowers/f1.png" alt="">
+            <img src="images/index/flowers/f3.png" alt="">
+            <img src="images/index/flowers/f1.png" alt="">
+          </div>
+      </div>
+    </div>
+    <!-- 页面底部结束 -->
+      </footer>
+  <!-- 底部引入2 -->
+           
+<script src="layui/layui.all.js" charset="utf-8"></script>
+  <script src="js/jquery-1.11.3.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script src="js/ajax.js"></script>
+  <script src="js/details.js"></script>
+  <script>
+    $('.headerpage').load('header.html')
+  </script>
+</body>
+
+</html>
