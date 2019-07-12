@@ -7,14 +7,14 @@ USE cake;
 DROP TABLE IF EXISTS cake_users;
 CREATE TABLE cake_users(
 	uid BIGINT(32) NOT NULL PRIMARY KEY AUTO_INCREMENT COMMENT '用户id(主键)',	
-	username VARCHAR(16) DEFAULT NULL COMMENT '昵称',
+	username VARCHAR(16) UNIQUE COMMENT '昵称',
 	realname VARCHAR(16) DEFAULT NULL COMMENT '真实姓名',
 	upassword VARCHAR(64) NOT NULL COMMENT '密码',
 	usex BOOL DEFAULT NULL COMMENT '性别',
 	uage INT(3) DEFAULT NULL COMMENT '年龄',
 	usignd VARCHAR(45) DEFAULT NULL COMMENT '签名',
 	pic_url VARCHAR(255) DEFAULT NULL COMMENT '头像存放图片的地址',
-	utelephone VARCHAR(11) DEFAULT NULL COMMENT '手机号码',
+	utelephone VARCHAR(11)  UNIQUE COMMENT '手机号码',
 	umarry INT(1) DEFAULT NULL COMMENT '婚恋状况',
 	umycity VARCHAR(64) DEFAULT NULL COMMENT '所在地',
 	umyaddress VARCHAR(255) DEFAULT NULL COMMENT '详细地址',
@@ -107,14 +107,15 @@ CREATE TABLE product_pic(
 );
 /**收货**/
 CREATE TABLE user_address(
+	user_id  BIGINT(32) NOT NULL COMMENT '客户id',
+	addname VARCHAR(10) NOT NULL COMMENT '收货人姓名',
 	telephone VARCHAR(11) NOT NULL COMMENT '收货人电话',
 	address VARCHAR(64) NOT NULL COMMENT '详细地址',
-	addname VARCHAR(10) NOT NULL COMMENT '收货人姓名',
-	user_id  BIGINT(32) NOT NULL COMMENT '客户id',
 	status INT NOT NULL COMMENT '状态',
 	FOREIGN KEY (user_id) REFERENCES cake_users(uid)
 );
 /**订单概览表**/
+
 CREATE TABLE orders(
 	user_orders_id BIGINT(32) NOT NULL COMMENT '用户id(外键)',
 	orders_id BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT COMMENT  '随机订单id',
@@ -122,19 +123,36 @@ CREATE TABLE orders(
 	ordersname VARCHAR(16) NOT NULL COMMENT '收货人姓名',
 	telephone VARCHAR(11) DEFAULT NULL COMMENT '电话',
 	address VARCHAR(64) NOT NULL COMMENT '收货地址',
+	total DECIMAL(30,2) DEFAULT NULL COMMENT '商品总价',
 	status INT(1) NOT NULL COMMENT '状态',
+	message VARCHAR(64) COMMENT '订单备注',
+	create_time DATETIME NOT NULL COMMENT '创建时间',
+	update_time DATETIME NOT NULL COMMENT '最后一次更新时间',
+	received_time DATETIME NOT NULL COMMENT '签收时间',
+	privilege VARCHAR(64) COMMENT '优惠信息',
+	other_three VARCHAR(64) COMMENT '其它3',
+	other_four VARCHAR(64) COMMENT '其它4',
 	FOREIGN KEY(user_orders_id)REFERENCES cake_users(uid)
 );
 /**订单明细**/
 CREATE TABLE orderdetails(
-	user_id BIGINT(32) NOT NULL COMMENT '用户id(外键)',
-	orders_id BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT COMMENT '订单id',
-	times DATETIME NOT NULL COMMENT '创建时间',
+	user_id BIGINT(32) NOT NULL PRIMARY KEY COMMENT '用户id(外键)',
+	orders_id BIGINT NOT NULL  COMMENT '随机订单id',
+	nub BIGINT(32) NOT NULL COMMENT '随机订单编号', 
+	p_id BIGINT NOT NULL COMMENT '商品id(外键)',
+	sizes INT(1) DEFAULT NULL COMMENT '商品规格 0小 1 中 2 大 3特大', 
+	product_kinds_name VARCHAR(45) NOT NULL COMMENT '种类名称',
+	cake_name VARCHAR(64) NOT NULL COMMENT '蛋糕名称', 
+	price DECIMAL(30,2) DEFAULT NULL COMMENT '商品价格',
+	count INT(16) DEFAULT NULL COMMENT '商品数量',
+	tableware_count INT(16) DEFAULT NULL COMMENT '餐具数量',
+	candle_one INT(16) DEFAULT NULL COMMENT '5元蜡烛数量',
+	candle_two INT(16) DEFAULT NULL COMMENT '10元蜡烛数量',
 	status INT(1) NOT NULL COMMENT '订单状态  1-等待付款  2-等待发货  3-运输中  4-已签收  5-已取消',
-	message VARCHAR(45) DEFAULT NULL COMMENT '付款时留言',
-	create_time DATETIME NOT NULL COMMENT '创建时间',
-	update_time DATETIME NOT NULL COMMENT '最后一次更新时间',
-	received_time DATETIME NOT NULL COMMENT '签收时间',
+	other_one VARCHAR(64) COMMENT '其它1',
+	other_two VARCHAR(64) COMMENT '其它2',
+	other_three VARCHAR(64) COMMENT '其它3',
+	other_four VARCHAR(64) COMMENT '其它4',
 	FOREIGN KEY(user_id)REFERENCES cake_users(uid)
 );
 
@@ -168,10 +186,10 @@ CREATE TABLE cake_index_product(
 	FOREIGN KEY(car_id)REFERENCES product_details(product_id)
 );
 /**购物车**/
-CREATE TABLE cake_index_cart(
+CREATE TABLE cake_cart(
 	c_id  BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT COMMENT '随机购物车id',
 	user_id BIGINT(32) NOT NULL COMMENT '用户id',
-	car_id BIGINT NOT NULL COMMENT '商品id(外键)',
+	p_id BIGINT NOT NULL COMMENT '商品id(外键)',
 	sizes INT(1) DEFAULT NULL COMMENT '商品规格 0小 1 中 2 大 3特大', 
 	product_kinds_name VARCHAR(45) NOT NULL COMMENT '种类名称',
 	cake_name VARCHAR(64) NOT NULL COMMENT '蛋糕名称', 
@@ -180,13 +198,16 @@ CREATE TABLE cake_index_cart(
 	tableware_count INT(16) DEFAULT NULL COMMENT '餐具数量',
 	candle_one INT(16) DEFAULT NULL COMMENT '5元蜡烛数量',
 	candle_two INT(16) DEFAULT NULL COMMENT '10元蜡烛数量',
-	sizes INT(1) DEFAULT NULL COMMENT '商品规格 0小 1 中 2 大 3特大',
 	others VARCHAR(64) NOT NULL COMMENT '优惠备注', 
 	uaddress VARCHAR(64) NOT NULL COMMENT '下单地址', 
 	uphone VARCHAR(64) NOT NULL COMMENT '下单电话',  
 	uname VARCHAR(64) NOT NULL COMMENT '下单姓名', 
 	status INT(1) NOT NULL COMMENT '状态',
-	FOREIGN KEY(car_id)REFERENCES product_details(product_id)
+	other_one VARCHAR(64) COMMENT '其它1',
+	other_two VARCHAR(64) COMMENT '其它2',
+	other_three VARCHAR(64) COMMENT '其它3',
+	other_four VARCHAR(64) COMMENT '其它4',
+	FOREIGN KEY(p_id)REFERENCES product_details(product_id)
 );
 
 
@@ -561,3 +582,60 @@ insert into cake_index_carousel values
 ( '48','48','images/index/banner48.jpg','黑白配','product_details.html?pid=48','2018-7-1 14:37:01','2018-7-1 14:37:01','0'),
 ( '49','49','images/index/banner49.jpg','粉红回忆','product_details.html?pid=49','2018-7-1 14:37:01','2018-7-1 14:37:01','0'),
 ( '50','50','images/index/banner50.jpg','巧克力精灵','product_details.html?pid=50','2018-7-1 14:37:01','2018-7-1 14:37:01','0');
+
+insert into cake_cart values 
+( '1','1','1','0','极致精选','兔小萌','299.99','2','2','0','2','无优惠','深圳市罗湖区人民北路3110号','15093390000','康麟','0','0','0','0','0'),
+( '2','2','2','1','极致精选','冻烤燃情芝士','299.99','1','1','0','1','无优惠','深圳市宝安区桥塘路12号','15093390001','禹锡','0','0','0','0','0'),
+( '3','3','3','2','极致精选','可莱思迪客英国进口冰淇淋(500ml)','299.99','1','1','0','1','无优惠','深圳市南山区朗山路12号','15093390002','智涛','0','0','0','0','0'),
+( '4','4','4','0','极致精选','吉致泡芙(巧克力)','299.99','1','1','0','1','无优惠','广东省深圳市龙华区观宝路12号','15093390003','磊贯','0','0','0','0','0'),
+( '5','5','5','1','极致精选','吉致泡芙','299.99','1','1','0','1','无优惠','广东省深圳市福田区裕亨路23号','15093390004','嘉恩','0','0','0','0','0'),
+( '6','1','6','2','极致精选','吉致牛轧糖(巴旦木味)','299.99','3','3','0','3','无优惠','深圳市罗湖区人民北路3110号','15093390000','康麟','0','0','0','0','0'),
+( '7','2','7','3','极致精选','吉致牛轧糖(巴旦木味)2盒','359.99','3','3','0','3','无优惠','深圳市宝安区桥塘路12号','15093390001','禹锡','0','0','0','0','0'),
+( '8','3','8','2','极致精选','吉致生巧','359.99','3','3','0','3','无优惠','深圳市南山区朗山路12号','15093390002','智涛','0','0','0','0','0'),
+( '9','4','9','3','极致精选','奥利奥雪域牛乳芝士','359.99','1','1','0','1','无优惠','广东省深圳市龙华区观宝路12号','15093390003','磊贯','0','0','0','0','0'),
+( '10','5','10','2','匠心原创','布朗尼精灵','359.99','2','2','0','2','无优惠','广东省深圳市福田区裕亨路23号','15093390004','嘉恩','0','0','0','0','0'),
+( '11','1','11','0','匠心原创','情定爱情海','359.99','2','2','0','2','无优惠','深圳市罗湖区人民北路3110号','15093390000','康麟','0','0','0','0','0'),
+( '12','2','12','1','匠心原创','慕尼黑巧克力','359.99','1','1','0','1','无优惠','深圳市宝安区桥塘路12号','15093390001','禹锡','0','0','0','0','0'),
+( '13','3','13','2','匠心原创','新公爵提拉米苏','469.99','1','1','1','0','无优惠','深圳市南山区朗山路12号','15093390002','智涛','0','0','0','0','0'),
+( '14','4','14','3','匠心原创','新狮子王','469.99','1','1','1','0','无优惠','广东省深圳市龙华区观宝路12号','15093390003','磊贯','0','0','0','0','0'),
+( '15','5','15','2','匠心原创','新疆美果[一级若羌红枣]','469.99','1','1','1','0','无优惠','广东省深圳市福田区裕亨路23号','15093390004','嘉恩','0','0','0','0','0'),
+( '16','1','16','2','匠心原创','新疆美果[开口杏核]','469.99','2','2','2','0','无优惠','深圳市罗湖区人民北路3110号','15093390000','康麟','0','0','0','0','0'),
+( '17','2','17','0','匠心原创','新疆美果[特级黑加仑葡萄干]','469.99','2','2','2','0','无优惠','深圳市宝安区桥塘路12号','15093390001','禹锡','0','0','0','0','0'),
+( '18','3','18','1','匠心原创','旺旺旺','269.99','2','2','2','0','无优惠','深圳市南山区朗山路12号','15093390002','智涛','0','0','0','0','0'),
+( '19','4','19','2','匠心原创','星光游乐园','269.99','2','2','2','0','无优惠','广东省深圳市龙华区观宝路12号','15093390003','磊贯','0','0','0','0','0'),
+( '20','5','20','3','匠心原创','春天芽儿-周茶','269.99','1','1','1','0','无优惠','广东省深圳市福田区裕亨路23号','15093390004','嘉恩','0','0','0','0','0'),
+( '21','1','21','2','匠心原创','朗姆香栗','269.99','1','1','1','0','无优惠','深圳市罗湖区人民北路3110号','15093390000','康麟','0','0','0','0','0'),
+( '22','2','22','2','匠心原创','杯子蛋糕','269.99','1','1','1','0','无优惠','深圳市宝安区桥塘路12号','15093390001','禹锡','0','0','0','0','0'),
+( '23','3','23','0','优雅西点','松露巧克力','299.99','1','1','1','0','无优惠','深圳市南山区朗山路12号','15093390002','智涛','0','0','0','0','0'),
+( '24','4','24','1','优雅西点','沃尔夫斯堡之春','299.99','1','1','1','0','无优惠','广东省深圳市龙华区观宝路12号','15093390003','磊贯','0','0','0','0','0'),
+( '25','5','25','2','优雅西点','洛可可甜心','299.99','1','1','1','0','无优惠','广东省深圳市福田区裕亨路23号','15093390004','嘉恩','0','0','0','0','0'),
+( '26','1','26','0','优雅西点','浓情花意','299.99','1','1','1','0','无优惠','深圳市罗湖区人民北路3110号','15093390000','康麟','0','0','0','0','0'),
+( '27','2','27','1','优雅西点','清椰瑞士卷2盒','299.99','1','1','1','0','无优惠','深圳市宝安区桥塘路12号','15093390001','禹锡','0','0','0','0','0'),
+( '28','3','28','2','优雅西点','玫瑰女王','299.99','1','1','1','0','无优惠','深圳市南山区朗山路12号','15093390002','智涛','0','0','0','0','0'),
+( '29','4','29','3','优雅西点','白色红丝绒','359.99','1','1','1','0','无优惠','广东省深圳市龙华区观宝路12号','15093390003','磊贯','0','0','0','0','0'),
+( '30','5','30','2','优雅西点','红莓森林(3.8特供)','359.99','1','1','1','0','无优惠','广东省深圳市福田区裕亨路23号','15093390004','嘉恩','0','0','0','0','0');
+
+insert into user_address values 
+('1','康麟','15093390000','深圳市罗湖区人民北路3110号','0'),
+('2','禹锡','15093390001','深圳市宝安区桥塘路12号','0'),
+('3','智涛','15093390002','深圳市南山区朗山路12号','0'),
+('4','磊贯','15093390003','广东省深圳市龙华区观宝路12号','0'),
+('5','嘉恩','15093390004','广东省深圳市福田区裕亨路23号','0');
+
+insert into orders values 
+( '1','1','20180701140201','康麟','15093390000','深圳市罗湖区人民北路3110号','599.98','4','记得打包好准时送货哟~~','2018-7-1 14:37:01','2018-7-1 14:37:01','2018-7-3 14:37:01','未使用优惠','0','0'),
+( '2','2','20180701140201','禹锡','15093390001','深圳市宝安区桥塘路12号','599.98','4','记得打包好准时送货哟~~','2018-7-1 14:37:01','2018-7-1 14:37:01','2018-7-3 14:37:01','未使用优惠','0','0'),
+( '3','3','20180701140201','智涛','15093390002','深圳市南山区朗山路12号','899.97','4','记得打包好准时送货哟~~','2018-7-1 14:37:01','2018-7-1 14:37:01','2018-7-3 14:37:01','未使用优惠','0','0'),
+( '4','4','20180701140201','磊贯','15093390003','广东省深圳市龙华区观宝路12号','299.99','4','记得打包好准时送货哟~~','2018-7-1 14:37:01','2018-7-1 14:37:01','2018-7-3 14:37:01','未使用优惠','0','0'),
+( '5','5','20180701140201','嘉恩','15093390004','广东省深圳市福田区裕亨路23号','599.98','4','记得打包好准时送货哟~~','2018-7-1 14:37:01','2018-7-1 14:37:01','2018-7-3 14:37:01','未使用优惠','0','0');
+
+
+
+
+
+insert into orderdetails values 
+( '1','1','20180701140201','1','0','极致精选','兔小萌','299.99','2','2','2','0','4','0','0','0','0'),
+( '2','2','20180701140201','2','0','极致精选','冻烤燃情芝士','299.99','2','2','2','0','4','0','0','0','0'),
+( '3','3','20180701140201','3','0','极致精选','可莱思迪客英国进口冰淇淋(500ml)','299.99','3','3','3','0','4','0','0','0','0'),
+( '4','4','20180701140201','4','0','极致精选','吉致泡芙(巧克力)','299.99','1','1','1','0','4','0','0','0','0'),
+( '5','5','20180701140201','5','0','极致精选','吉致泡芙','299.99','2','2','2','0','4','0','0','0','0');

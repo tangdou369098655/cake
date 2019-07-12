@@ -8,14 +8,14 @@ const querystring=require('querystring');
 // const bodyParser=require('body-parser');
 //商品查询
 router.get('/',(req,res)=>{
-	var search1=decodeURI(req.query.pid);
+	var search1=decodeURI(req.query.kid);
 	if(!search1){
 		res.send('请至少输入一个商品关键字');
 		return;
 	}else{
-	pool.query(`select * from product_details where product_id=? `,[search1],(err, result) =>{
+	pool.query(`select * from product_details where product_kinds_id=? `,[search1],(err, result) =>{
 		if (err) console.log(err);
-		var search = result[0];
+		var search = result;
 		console.log(search);
 		res.send(search);
 	});}

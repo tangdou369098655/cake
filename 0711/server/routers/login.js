@@ -1,3 +1,5 @@
+//本接口仅供测试使用  
+
 //引入路由模块
 const express=require('express');
 //创建路由器对象
@@ -8,14 +10,14 @@ const querystring=require('querystring');
 // const bodyParser=require('body-parser');
 //商品查询
 router.get('/',(req,res)=>{
-	var search1=decodeURI(req.query.pid);
+	var search1=decodeURI(req.query.uname);
 	if(!search1){
-		res.send('请至少输入一个商品关键字');
+		res.send('必须输入用户名');
 		return;
 	}else{
-	pool.query(`select * from product_details where product_id=? `,[search1],(err, result) =>{
+	pool.query(`select * from cake_users where username=? `,[search1],(err, result) =>{
 		if (err) console.log(err);
-		var search = result[0];
+		var search = result;
 		console.log(search);
 		res.send(search);
 	});}
